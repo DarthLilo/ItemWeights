@@ -7,9 +7,9 @@ namespace ItemWeights.Patches
     {
         [HarmonyPatch(nameof(GrabbableObject.Start))]
         [HarmonyPostfix]
-        public static void ChangeItemWeights(GrabbableObject __instance)
+        public static void ChangeItemData(GrabbableObject __instance)
         {
-            WeightPatch.SetItemWeight(__instance);
+            ItemPatch.UpdateItemWeight(__instance);
         }
     }
 }
