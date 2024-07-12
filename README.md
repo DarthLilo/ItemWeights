@@ -1,8 +1,10 @@
 # ItemWeights
 
-A Lethal Company mod to easily control the weights of items!
+A Lethal Company mod to easily control the item settings!
 
-Tested and works on Lethal Company v50 and v55 Beta!
+You can adjust item weights (Actual weight, not spawn weight), the scrap price ranges, and how much items in the terminal cost!
+
+Tested and works on Lethal Company v50 and v56!
 
 (Required on all clients)
 
