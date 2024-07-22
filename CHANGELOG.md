@@ -1,3 +1,6 @@
+# 1.2.1
+- Added a keybind to toggle terminal node logging
+
 # 1.2.0
 General Additions
 - Added visual feedback to terminal keybind

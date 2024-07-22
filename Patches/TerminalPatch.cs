@@ -170,6 +170,11 @@ namespace ItemWeights.Patches
         [HarmonyPrefix]
         public static void LoadNewNodePatch(Terminal __instance, ref TerminalNode node)
         {
+            if (ItemWeights.logTerminalNodes)
+            {
+                ItemWeights.Logger.LogInfo($"Accessing node {node.name}");
+            }
+
             if (node.name == "buyCruiser" || node.name == "buyCruiser2")
             {
                 node.itemCost = ItemWeightsConfigHelper.CruiserPrice.Value;

@@ -18,6 +18,9 @@ public class ItemWeightsKeybindHelper : LcInputActions
     [InputAction(KeyboardControl.None,Name ="Register Terminal Store")]
     public InputAction RegisterTerminalStore { get; set; }
 
+    [InputAction(KeyboardControl.None,Name ="Print Terminal Keywords")]
+    public InputAction PrintTerminalKeywords { get; set; }
+
 }
 
 public static class ItemWeightsCallbacks
@@ -26,6 +29,7 @@ public static class ItemWeightsCallbacks
     {
         ItemWeights.InputActionsInstance.RegisterItem.performed += OnRegisterItemPressed;
         ItemWeights.InputActionsInstance.RegisterTerminalStore.performed += OnRegisterTerminalStorePressed;
+        ItemWeights.InputActionsInstance.PrintTerminalKeywords.performed += OnPrintTerminalKeywordsPressed;
     }
 
     public static void OnRegisterItemPressed(InputAction.CallbackContext registerContext)
@@ -127,5 +131,15 @@ public static class ItemWeightsCallbacks
         HUDManager.Instance.DisplayTip("ItemWeights",$"Updated terminal prices string, you can now edit it in the config!",false,false,"LC_Tip1");
 
 
+    }
+
+    public static void OnPrintTerminalKeywordsPressed(InputAction.CallbackContext keywordContext)
+    {
+        if (!keywordContext.performed) return;
+
+        ItemWeightsConfigHelper.LogTerminalNodes.Value = !ItemWeightsConfigHelper.LogTerminalNodes.Value;
+        ItemWeights.logTerminalNodes = ItemWeightsConfigHelper.LogTerminalNodes.Value;
+
+        HUDManager.Instance.DisplayTip("ItemWeights",$"Set terminal node logging to {ItemWeightsConfigHelper.LogTerminalNodes.Value}!",false,false,"LC_Tip1");
     }
 }

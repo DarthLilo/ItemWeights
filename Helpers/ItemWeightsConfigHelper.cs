@@ -11,6 +11,7 @@ public static class ItemWeightsConfigHelper
     public static ConfigEntry<string> TerminalPrices;
     public static ConfigEntry<string> TerminalKeywords;
     public static ConfigEntry<string> TerminalKeywordsConfirm;
+    public static ConfigEntry<bool> LogTerminalNodes;
     public static ConfigEntry<int> CruiserPrice;
     public static ConfigEntry<int> TeleporterPrice;
     public static ConfigEntry<int> InverseTeleporterPrice;
@@ -45,6 +46,9 @@ public static class ItemWeightsConfigHelper
         TerminalKeywordsConfirm = config.Bind<string>("Advanced Config","TerminalKeywordsConfirm","GreenSuitBuy1:GreenSuitBuyConfirm,HazardSuitBuy1:HazardSuitBuyConfirm,PajamaSuitBuy1:PajamaSuitBuyConfirm,CozyLightsBuy1:CozyLightsBuyConfirm,TelevisionBuy1:TelevisionBuyConfirm,ToiletBuy1:ToiletBuyConfirm,ShowerBuy1:ShowerBuyConfirm,RecordPlayerBuy:RecordPlayerBuyConfirm,TableBuy1:TableBuyConfirm,SignalTranslatorBuy:SignalTranslatorBuyConfirm,JackOLanternBuy:JackOLanternBuyConfirm,:WelcomeMatBuy:WelcomeMatBuyConfirm,FishBowlBuy:FishBowlBuyConfirm,PlushiePajamaManBuy:PlushiePajamaManBuyConfirm,PurpleSuitBuy1:PurpleSuitBuyConfirm,BeeSuitBuy:BeeSuitBuyConfirm,BunnySuitBuy:BunnySuitBuyConfirm,DiscoBallBuy:DiscoBallBuyConfirm","This is a config setting used to determine terminal keyword to item matching, it is NOT reccomended to touch this unless you know what you are doing!");
         var TerminalKeywordsConfirmField = new TextInputFieldConfigItem(TerminalKeywordsConfirm,true);
 
+        LogTerminalNodes = config.Bind<bool>("Advanced Config","LogTerminalNodes",false,"Logs accessed terminal nodes in the output");
+        var LogTerminalNodesField = new BoolCheckBoxConfigItem(LogTerminalNodes,true);
+
 
 
         LethalConfigManager.AddConfigItem(ItemWeightsField);
@@ -54,6 +58,7 @@ public static class ItemWeightsConfigHelper
         LethalConfigManager.AddConfigItem(TeleporterPriceField);
         LethalConfigManager.AddConfigItem(InverseTeleporterPriceField);
         LethalConfigManager.AddConfigItem(LoudHornPriceField);
+        LethalConfigManager.AddConfigItem(LogTerminalNodesField);
         LethalConfigManager.AddConfigItem(TerminalKeywordsField);
         LethalConfigManager.AddConfigItem(TerminalKeywordsConfirmField);
         LethalConfigManager.SetModDescription("A mod for configuring weights of individual items.");
