@@ -15,6 +15,8 @@ namespace ItemWeights;
 public class ItemWeights : BaseUnityPlugin
 {
     public static ItemWeights Instance { get; private set; } = null!;
+
+    public static ConfigFile Config_Data;
     internal new static ManualLogSource Logger { get; private set; } = null!;
     internal static Harmony? Harmony { get; set; }
 
@@ -24,10 +26,11 @@ public class ItemWeights : BaseUnityPlugin
     {
         Logger = base.Logger;
         Instance = this;
+        Config_Data = Config;
 
         // CONFIG
 
-        ItemWeightsConfigHelper.SetLethalConfig(Config);
+        ItemWeightsConfigHelper.SetLethalConfig(Config_Data);
         InputActionsInstance = new ItemWeightsKeybindHelper();
         
 

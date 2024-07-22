@@ -99,22 +99,16 @@ public static class ItemWeightsCallbacks
         var terminal = Object.FindObjectOfType<Terminal>();
 
         var buyableItems = terminal.buyableItemsList;
-        var buyableVehicles = terminal.buyableVehicles;
         var buyableDecor = terminal.ShipDecorSelection;
         var unlockablesList = StartOfRound.Instance.unlockablesList.unlockables;
 
         foreach(var item in buyableItems) {
-            if (itemIDs.Contains(item.name)) return;
+            if (itemIDs.Contains(item.name)) continue;
             addEntry(item.name,item.creditsWorth);
         }
 
-        foreach(var vehicle in buyableVehicles) {
-            if (itemIDs.Contains(vehicle.vehicleDisplayName)) return;
-            addEntry(vehicle.vehicleDisplayName,vehicle.creditsWorth);
-        }
-
         foreach(var item in buyableDecor) {
-            if (itemIDs.Contains(item.name)) return;
+            if (itemIDs.Contains(item.name)) continue;
             addEntry(item.name,item.itemCost);
         }
 
@@ -130,6 +124,7 @@ public static class ItemWeightsCallbacks
         }
 
         ItemWeightsConfigHelper.TerminalPrices.Value = terminalPricesString;
+        HUDManager.Instance.DisplayTip("ItemWeights",$"Updated terminal prices string, you can now edit it in the config!",false,false,"LC_Tip1");
 
 
     }
